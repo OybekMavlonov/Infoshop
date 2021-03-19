@@ -1,0 +1,102 @@
+@font-face {
+  font-family: M_Bold;
+  src: url(../fonts/montserrat/Montserrat-Bold/Montserrat-Bold.woff);
+}
+
+@font-face {
+  font-family: M_Medium;
+  src: url(../fonts/montserrat/Montserrat-Medium/Montserrat-Medium.woff);
+}
+
+@font-face {
+  font-family: M_SemiBold;
+  src: url(../fonts/montserrat/Montserrat-SemiBold/Montserrat-SemiBold.woff);
+}
+
+@font-face {
+  font-family: FontAwesome;
+  src: url(../fonts/fontawesome-webfont.woff);
+}
+
+.bold {
+  font-family: M_Bold, Arial, Helvetica, sans-serif;
+}
+
+.sm {
+  font-family: M_SemiBold, Arial, Helvetica, sans-serif;
+}
+
+.m {
+  font-family: M_Medium, Arial, Helvetica, sans-serif;
+}
+
+.task-product {
+  color: $link-color;
+  font-size: 15px;
+  line-height: 19px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 -10px $main-color;
+  }
+
+  40% {
+    box-shadow: 0 0 20px $main-color;
+  }
+
+  60% {
+    box-shadow: 0 0 20px $main-color;
+  }
+
+  100% {
+    box-shadow: 0 0 -10px $main-color;
+  }
+}
+
+.iconcenter {
+  margin-right: 6px;
+  position: relative;
+  bottom: 3px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+.button {
+  background: #9d68d9;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 15px;
+  font-family: M_medium, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  padding: 15px 32px;
+}

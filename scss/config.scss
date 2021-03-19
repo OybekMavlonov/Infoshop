@@ -1,0 +1,12 @@
+// Media Query Mixins
+@mixin MQ($canvas) {
+  @media (max-width: $canvas) {
+    @content;
+  }
+}
+
+@mixin MQH($canvas) {
+  @media (max-height: $canvas) {
+    @content;
+  }
+}

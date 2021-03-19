@@ -1,0 +1,1063 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  color: $read;
+  @include transition(all .3s ease-in-out);
+  position: relative;
+  left: 0;
+
+  &>.over-menu {
+    @include transition(all .3s ease-in-out);
+    position: fixed;
+    height: 100%;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    background: rgba($black, .8);
+    z-index: 9;
+  }
+
+  &.open-menu {
+
+    &>.over-menu {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .menu-container {
+      left: 0 !important;
+    }
+
+    header {
+      background: transparent;
+
+      .rightside_logo,
+      .header-buttons,
+      .loginarea {
+        display: none !important;
+      }
+
+      .hamburger-menu {
+        .bar {
+
+          &::before,
+          &::after {
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none !important;
+  outline: none;
+  color: $link-color;
+}
+
+.hidden {
+  display: none;
+}
+
+
+header {
+  font-family: M_Medium, Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+
+  .desk-menu {
+    @extend .flex;
+
+    .logo {
+      padding: 20px;
+    }
+
+    .rightside {
+      display: flex;
+      align-items: center;
+
+      .box-menu {
+        @include transition(all 0.3s ease-in-out);
+        position: relative;
+        display: block;
+
+        .menu-container {
+
+          .menu-head,
+          .menu-foot {
+            width: 100%;
+            float: left;
+            display: none;
+          }
+
+          .menu-head {
+            padding: 16px 10px;
+            border-bottom: 1px solid $main-color;
+
+            .e1 {
+              padding: 3px 0;
+              float: left;
+
+              img {
+                width: 29px;
+                float: left;
+                height: 29px;
+              }
+            }
+
+            .client {
+              color: $white;
+              float: right;
+
+              span {
+                text-transform: uppercase;
+                padding: 5px 42px 5px 0;
+                position: relative;
+                line-height: 100%;
+                font-size: 9px;
+                display: block;
+              }
+
+              i {
+                position: absolute;
+                font-size: 30px;
+                right: 0;
+                top: 0;
+              }
+            }
+          }
+
+          .menu {
+            float: left;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            position: relative;
+            @include transition(all 0.3s ease-in-out);
+            font-family: M_Medium, Arial, Helvetica, sans-serif;
+
+
+            li {
+              &.back {
+                display: none;
+              }
+
+              a {
+                &:hover {
+                  color: $main-color;
+                  transition: all .5s ease;
+                }
+              }
+
+              .counter {
+                position: absolute;
+                border-radius: 50%;
+                width: 12px;
+                height: 12px;
+                font-weight: bold;
+                background-color: rgb(211, 208, 225);
+                color: #fff;
+                font-size: 8px;
+                top: 16px;
+                right: 0;
+                text-align: center;
+              }
+            }
+
+            &>li {
+              @include transition(all .33s ease);
+              float: left;
+              cursor: pointer;
+              position: relative;
+              overflow: inherit;
+
+              a {
+                position: relative;
+                font-size: 13px;
+                padding: 20px 12px;
+                display: block;
+                color: $link-color;
+
+                img {
+                  @extend .iconcenter;
+                }
+
+
+              }
+
+              &.menu-item-has-children {
+                &>a {
+                  padding: 20px 15px;
+                  position: relative;
+
+                  &::before,
+                  &::after {
+                    @include transition(all 0.3s ease-in-out);
+                    background-color: $read;
+                    position: absolute;
+                    content: '';
+                    height: 1px;
+                    width: 7px;
+                    top: 30px;
+                  }
+
+                  &::before {
+                    @include transform(rotate(45deg));
+                    right: 4px;
+                  }
+
+                  &::after {
+                    @include transform(rotate(-45deg));
+                    right: 0px;
+                  }
+                }
+
+                .sub-menu {
+                  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.25);
+                  @include transition(top .7s ease-in-out);
+                  -webkit-overflow-scrolling: touch;
+                  min-width: 200px;
+                  position: absolute;
+                  list-style: none;
+                  padding: 0;
+                  float: left;
+                  display: table;
+                  left: 0;
+                  width: 100%;
+                  float: left;
+                  display: none;
+                  // top: 120%;
+                  // opacity: 0;
+                  // visibility: hidden;
+                  border-top: 2px solid $main-color;
+
+
+                  li {
+                    position: relative;
+                    border-top: 1px solid #eee;
+                    @include transition(all .33s ease);
+
+                    &>a {
+                      color: $link-color;
+                      padding: 12px;
+                    }
+
+                    .sub-menu {
+                      display: none;
+                    }
+
+                    &.menu-item-has-children {
+                      &>a {
+
+                        &::before,
+                        &::after {
+                          @include transition(all 0.3s ease-in-out);
+                          background-color: $read;
+                          position: absolute;
+                          content: '';
+                          height: 1px;
+                          width: 7px;
+                          top: 24px;
+                        }
+
+                        &::before {
+                          transform: rotate(45deg);
+                          right: 6px;
+                          top: 19px;
+                        }
+
+                        &::after {
+                          transform: rotate(-45deg);
+                          right: 6px;
+                          top: 23px;
+                        }
+                      }
+
+                      &:hover {
+
+                        // background: lighten($black, 10%);
+                        &>a {
+                          display: block;
+                        }
+
+                        .sub-menu {
+                          display: block;
+                        }
+                      }
+                    }
+
+                    &:hover {
+                      &>a {
+                        color: $main-color;
+                        padding: 12px 12px 12px 18px;
+                        background-color: #eeeff1;
+                        transition: all ease .4s;
+
+                        &::before {
+                          @include transform(rotate(142deg));
+                          top: 23px;
+                        }
+
+                        &::after {
+                          @include transform(rotate(42deg));
+                          right: 11px;
+                        }
+                      }
+                    }
+                  }
+
+                  .sub-menu {
+                    left: 100%;
+                    margin-top: -43px;
+
+                    .menu-item-has-children {}
+                  }
+                }
+
+                a {
+                  text-align: left;
+
+                  &:hover {
+                    margin-top: 0;
+                  }
+                }
+              }
+
+              &:hover {
+                &>a {
+                  // color: $red-dark;  
+
+                  &::before {
+                    @include transform(translateX(5px) rotate(-45deg));
+                    width: 7px;
+                    right: 10px;
+                    background-color: $main-color;
+                  }
+
+                  &::after {
+                    @include transform(rotate(45deg));
+                    width: 7px;
+                    right: 0px;
+                    background-color: $main-color;
+                  }
+                }
+
+                &.menu-item-has-children {
+                  .sub-menu {
+                    display: block;
+                    // top: 100%;
+                    // opacity: 1;
+                    // visibility: visible;
+                    background-color: #fff;
+                    @include transition(top .7s ease-in-out);
+                    // width: 200px;
+                  }
+                }
+              }
+
+              // LINE HOVER
+              &.line {
+                // @include transition(all 0.7s);
+                // position: absolute;
+                // bottom: 11px;
+                // left: 0;
+                // height: 0px;
+                // pointer-events: none;
+                // border: 1px solid $main-color;
+                // background: $main-color;
+                // -webkit-transition-timing-function: cubic-bezier(1, 0.01, 0, 1);
+                // -webkit-transition-timing-function: cubic-bezier(1, 0.01, 0, 1.22);
+                // transition-timing-function: cubic-bezier(1, 0.01, 0, 1.22);
+                // opacity: 0;
+                // display: block;
+              }
+            }
+          }
+        }
+      }
+
+      &_logo {
+        display: none;
+      }
+
+      .header-buttons {
+
+
+        a {
+          font-size: 13px;
+          padding: 10px 22px;
+          margin: 0 6px;
+          @extend .button;
+        }
+
+        .create-task {
+          margin-left: 16px;
+        }
+
+        .freelancer {
+          background: rgb(0, 193, 219);
+          margin-right: 20px;
+        }
+      }
+
+      .loginarea {
+        display: flex;
+        justify-content: space-between;
+        color: $link-color;
+        font-size: 13px;
+        padding: 5px 0;
+        border-left: 1px solid #eee;
+        @extend .m;
+
+        .lang {
+          position: relative;
+          margin: 0 15px;
+
+          &:hover>.lang_dropdown {
+            width: 80px;
+            background-color: #fff;
+            top: 100%;
+            opacity: 1;
+            display: block;
+            visibility: visible;
+          }
+
+          &_dropdown {
+            position: absolute;
+            top: 120%;
+            padding: 0;
+            list-style: none;
+            border-top: 2px solid $main-color;
+            opacity: 0;
+            visibility: hidden;
+            transition: top 0.5s;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+            li {
+              position: relative;
+              margin: 0px;
+              float: none;
+              display: list-item;
+              border-top: 1px solid #eee;
+
+              &:hover {
+                transition: all ease 0.4s;
+              }
+
+              a {
+                padding: 4px;
+                margin: 0;
+                display: block;
+                font-weight: 500;
+                color: $link-color;
+
+                &:hover {
+                  padding: 4px 6px;
+                  color: $main-color;
+                  transition: all ease 0.4s;
+                }
+              }
+            }
+          }
+        }
+
+        .login {
+          margin: 0 15px;
+
+          &_link {
+            img {
+              @extend .iconcenter;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .hamburger-menu {
+    top: 0px;
+    right: 300px;
+
+    .bar,
+    .bar::after,
+    .bar::before {
+      width: 30px;
+      height: 3px;
+    }
+
+    .bar {
+      &::before {
+        bottom: 9px;
+      }
+
+      &::after {
+        top: 9px;
+      }
+    }
+  }
+
+
+  @include MQ(1200px) {
+    height: 85px;
+
+    .desk-menu {
+      .logo {
+        display: none;
+      }
+
+      .rightside {
+        justify-content: space-between;
+        width: 100%;
+        margin: 20px;
+
+        .box-menu {
+          ul {
+            li {
+              a {
+                color: $white !important;
+                border-bottom: 1px solid #eaeaea;
+              }
+            }
+          }
+
+          .menu-container {
+            @include transition(all .3s ease-in-out);
+            background: $white;
+            position: fixed;
+            height: 100%;
+            width: 45%;
+            left: -1000px;
+            top: 0;
+            z-index: 100;
+
+            .menu-head {
+              .loginarea {
+                display: flex !important;
+                justify-content: space-around;
+                border: none;
+
+                .lang {
+                  &_link {
+                    padding: 0 5px;
+                  }
+                }
+              }
+            }
+
+            .menu-header-container {
+              position: relative;
+              float: left;
+
+              ul {
+                padding: 10px !important;
+              }
+            }
+
+            .menu {
+              margin: 0;
+
+              li {
+                &.back {
+                  position: relative;
+                  display: block;
+
+                  a {
+                    padding: 12px 12px 12px 35px !important;
+
+                    &::before,
+                    &::after {
+                      background-color: $read;
+                      position: absolute;
+                      content: '';
+                      height: 2px;
+                      width: 7px;
+                      top: 23px;
+                    }
+
+                    &::before {
+                      @include transform(rotate(-45deg) !important);
+                      top: 20px !important;
+                      right: inherit !important;
+                      left: 15px !important;
+                    }
+
+                    &::after {
+                      @include transform(rotate(45deg) !important);
+                      top: 24px !important;
+                      left: 15px !important;
+                    }
+                  }
+                }
+
+                &.line {
+                  display: none !important;
+                }
+              }
+
+              .menu-item-has-children {
+                &_link {
+
+                  &::before,
+                  &::after {
+                    @include transition(all 0.3s ease-in-out);
+                    background-color: $read;
+                    position: absolute;
+                    content: '';
+                    height: 1px;
+                    width: 7px;
+                    top: 26px;
+                  }
+
+                  &::before {
+                    @include transform(rotate(45deg));
+                    right: 10px;
+                  }
+
+                  &::after {
+                    @include transform(rotate(-45deg));
+                    right: 6px;
+                  }
+                }
+              }
+
+              &>li {
+                width: 100%;
+                float: left;
+                margin: 0;
+                text-align: left;
+
+                a {
+                  padding: 12px;
+                  color: $link-color !important;
+                }
+
+                &.menu-item-has-children {
+                  position: initial;
+
+                  a {
+                    padding: 12px;
+
+                    &::before,
+                    &::after {
+                      background: $read;
+                    }
+
+                    &::before {
+                      right: 6px !important;
+                      top: 19px !important;
+                      width: 7px !important;
+                    }
+
+                    &::after {
+                      top: 23px !important;
+                      width: 7px !important;
+                      right: 6px !important;
+                    }
+                  }
+
+                  .sub-menu {
+                    box-shadow: none;
+                    @include transition(all .3s ease-in-out);
+                    display: none !important;
+                    background: $white;
+                    z-index: 1;
+                    top: 0;
+                    left: 100%;
+                    height: 100%;
+
+                    .sub-menu {
+                      margin-top: 0;
+                    }
+
+                    &.open-sub {
+                      left: 0%;
+                      border: none;
+                      display: block !important;
+                    }
+
+                    li {
+                      border-top: none;
+
+                      &.menu-item-has-children {
+                        &>a {
+
+                          &::before,
+                          &::after {
+                            background-color: $read;
+                          }
+
+                          &::before {
+                            @include transform(rotate(45deg) !important);
+                            right: 6px !important;
+                            top: 22px !important;
+                            width: 7px !important;
+                          }
+
+                          &::after {
+                            @include transform(rotate(-45deg) !important);
+                            right: 6px !important;
+                            top: 26px !important;
+                            width: 7px !important;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                &:hover {
+                  a {
+                    &:before {
+                      @include transform(rotate(45deg));
+                      right: 6px;
+                      top: 22px;
+                    }
+
+                    &::after {
+                      @include transform(rotate(-45deg));
+                      right: 6px;
+                      top: 26px;
+                    }
+                  }
+                }
+              }
+            }
+
+            .menu-head {
+              display: block;
+            }
+
+            .menu-foot {
+              display: block;
+            }
+          }
+
+          .hamburger-menu {
+            @include transition(all .3s ease);
+            display: block;
+            // position: absolute;
+            // top: 0px;
+            // bottom: 0;
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            right: 300px;
+            z-index: 11;
+
+            span {
+              text-transform: uppercase;
+              left: calc(-100% + -5px);
+              padding: 8px 9px 8px 0;
+              top: calc(50% - 18px);
+              position: absolute;
+              font-size: 13px;
+              color: $white;
+            }
+
+            .bar,
+            .bar::after,
+            .bar::before {
+              width: 35px;
+              height: 3px;
+            }
+
+            .bar {
+              position: relative;
+              @include transform(translateY(25px));
+              @include transition(all .1s ease);
+              background: #9d68d9;
+              top: -7px;
+
+              &::before,
+              &::after {
+                position: absolute;
+                background: #9d68d9;
+                content: '';
+                left: 0;
+                border-radius: 5px;
+              }
+
+              &::before {
+                bottom: 10px;
+                @include transition(bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1));
+              }
+
+              &::after {
+                top: 10px;
+                @include transition(top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1));
+              }
+
+              &.animate {
+                background: rgba($white, 0);
+
+                &::after {
+                  top: 0;
+                  @include transform(rotate(45deg));
+                  @include transition(top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1));
+                }
+
+                &::before {
+                  bottom: 0;
+                  @include transform(rotate(-45deg));
+                  @include transition(bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1));
+                }
+              }
+            }
+          }
+        }
+
+        &_logo {
+          display: block;
+        }
+      }
+    }
+
+    &.small {
+      .hamburger-menu {
+        // top: 31px;
+
+        span {
+          // color: $read;
+        }
+
+        .bar {
+          // background: $read;
+
+          &::before,
+          &::after {
+            // background: $read;
+          }
+
+          &.animate {
+            background: rgba($white, 0);
+          }
+        }
+      }
+    }
+  }
+
+  @include MQ(760px) {
+    body {
+      &.open-menu {
+        header {
+          .hamburger-menu {
+            left: 30px;
+          }
+        }
+      }
+    }
+
+    height: 70px;
+
+    .desk-menu {
+      .rightside {
+        margin: 12px;
+
+        .header-buttons {
+          .freelancer {
+            margin-right: 0;
+          }
+
+        }
+
+        .loginarea {
+          display: none !important;
+        }
+
+        .box-menu {
+          .menu-container {
+            width: 55%;
+
+            .menu {
+              li {
+                a {
+                  padding: 8px 12px;
+
+                  &:hover {
+                    color: $main-color !important;
+                    transition: all .5s ease;
+                  }
+
+                }
+
+                &.back {
+                  a {
+                    padding: 8px 12px 8px 35px !important;
+
+                    &::before {
+                      top: 17px !important;
+                    }
+
+                    &::after {
+                      top: 21px !important;
+                    }
+                  }
+                }
+              }
+
+              &>li {
+                &.menu-item-has-children {
+                  a {
+                    padding: 8px 12px;
+
+                    &::before {
+                      top: 18px;
+                    }
+
+                    &::after {
+                      top: 22px;
+                    }
+                  }
+
+                  .sub-menu {
+                    li {
+                      &:hover {
+                        &>a {
+                          padding: 8px 15px;
+                          color: $main-color !important;
+                        }
+                      }
+
+                      &>a {
+                        padding: 8px 12px;
+                      }
+
+                      &.menu-item-has-children {
+                        &>a {
+                          &::before {
+                            top: 18px;
+                          }
+
+                          &::after {
+                            top: 22px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include MQ(576px) {
+    .desk-menu {
+      .rightside {
+        .header-buttons {
+          display: none;
+        }
+
+        .box-menu {
+
+          .hamburger-menu {
+            .bar {
+              width: 30px;
+
+              &::after {
+                width: 30px;
+                top: 8px;
+              }
+
+              &::before {
+                bottom: 8px;
+                width: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include MQ(481px) {
+    height: 60px;
+
+    .desk-menu {
+      .rightside {
+        margin: 10px 20px;
+
+        &_logo {
+          img {
+            width: 90px;
+          }
+        }
+
+        .box-menu {
+          .menu-container {
+            width: 60%;
+          }
+
+          .hamburger-menu {
+            .bar {
+              width: 25px;
+
+              &::after {
+                width: 25px;
+                top: 8px;
+              }
+
+              &::before {
+                bottom: 8px;
+                width: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include MQ(396px) {
+    .desk-menu {
+      .rightside {
+
+        .box-menu {
+          .menu-container {
+            width: 70%;
+
+            .menu-head {
+              .loginarea {
+                .lang_link {
+                  padding: 0 1px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include MQ(278px) {
+    .desk-menu {
+      .rightside {
+
+        .box-menu {
+          .menu-container {
+            width: 75%;
+
+            .menu-head {
+              padding: 10px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
